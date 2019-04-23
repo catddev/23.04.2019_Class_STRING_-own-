@@ -38,9 +38,9 @@ int main() {
 	cout << s4.substr(2, 5) << endl; // llo,
 	cout << s4.find('o') << endl;
 
-	/*String s3;
+	String s3;
 	cin >> s3;
-	cout << s3 << endl;*/
+	cout << s3 << endl;
 
 
 	system("pause");

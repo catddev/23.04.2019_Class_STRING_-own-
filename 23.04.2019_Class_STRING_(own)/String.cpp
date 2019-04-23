@@ -296,8 +296,10 @@ ostream & operator<<(ostream & os, String s)
 
 istream & operator>>(istream & is, String &s)
 {
-	is.getline(s.str, 1000, '\n');
-	
+	s.cur_size = 1000; //обязательно задать cur_size иначе он по умолчанию 0 и поэтому ничего не записывается
+	is.getline(s.str, '\n');
+	//takes only 9 symbols
+	//cout << sizeof(s) << endl;//only 12 every time
 	return is;
 }
 

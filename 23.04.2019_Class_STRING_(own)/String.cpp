@@ -133,10 +133,7 @@ bool String::operator>(String s) const
 {
 	if (*this == (s)) return false;
 	int i = 0;
-	int k;
-	if (cur_size < s.cur_size) k = cur_size;
-	else k = s.cur_size;
-	while (i != k)
+	while (i != cur_size || i!=s.cur_size)
 	{
 		if (str[i] > s.str[i])
 			return true;
@@ -178,10 +175,7 @@ bool String::operator>(const char * s) const
 {
 	if (*this == (s)) return false;
 	int i = 0;
-	int k;
-	if (cur_size < strlen(s)) k = cur_size;
-	else k = strlen(s);
-	while (i != k)
+	while (i != cur_size || i!=strlen(s))
 	{
 		if (str[i] > s[i])
 			return true;

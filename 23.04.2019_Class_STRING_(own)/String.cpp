@@ -139,8 +139,7 @@ bool String::operator>(String s) const
 			return true;
 		else if (str[i] < s.str[i])
 			return false;
-
-		else i++;
+		i++;
 	}
 	if (cur_size > s.cur_size) return true;
 	else return false;
@@ -181,8 +180,7 @@ bool String::operator>(const char * s) const
 			return true;
 		else if (str[i] < s[i])
 			return false;
-
-		else i++;
+		i++;
 	}
 	if (cur_size > strlen(s)) return true;
 	else return false;
@@ -290,8 +288,12 @@ ostream & operator<<(ostream & os, String s)
 
 istream & operator>>(istream & is, String &s)
 {
+	s.str = nullptr;
 	s.cur_size = 1000; //обязательно задать cur_size иначе он по умолчанию 0 и поэтому ничего не записывается
+	if (s.cur_size > s.buf_size) s.buf_size = s.cur_size;
+	s.str = new char[s.buf_size];
 	is.getline(s.str, '\n');
+	cout << s.cur_size << " " << s.buf_size << endl;
 	//takes only 9 symbols
 	//cout << sizeof(s) << endl;//only 12 every time
 	return is;

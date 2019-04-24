@@ -288,14 +288,10 @@ ostream & operator<<(ostream & os, String s)
 
 istream & operator>>(istream & is, String &s)
 {
-	s.str = nullptr;
-	s.cur_size = 1000; //обязательно задать cur_size иначе он по умолчанию 0 и поэтому ничего не записывается
-	if (s.cur_size > s.buf_size) s.buf_size = s.cur_size;
-	s.str = new char[s.buf_size];
-	is.getline(s.str, '\n');
-	cout << s.cur_size << " " << s.buf_size << endl;
-	//takes only 9 symbols
-	//cout << sizeof(s) << endl;//only 12 every time
+	string line;//используем готовую библиотеку string
+	getline(is, line);
+	s = line.c_str();
+
 	return is;
 }
 
